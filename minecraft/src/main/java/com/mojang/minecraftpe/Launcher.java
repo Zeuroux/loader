@@ -1,18 +1,16 @@
 package com.mojang.minecraftpe;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+/** @noinspection ALL*/
 public class Launcher extends com.mojang.minecraftpe.MainActivity {
     @Override
     public void onCreate(Bundle bundle) {
-        Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show();
         try {
-            @SuppressLint("DiscouragedPrivateApi") Method addAssetPath = getAssets().getClass().getDeclaredMethod("addAssetPath", String.class);
+            Method addAssetPath = getAssets().getClass().getDeclaredMethod("addAssetPath", String.class);
             String mcSource = getIntent().getStringExtra("MC_SRC");
             addAssetPath.invoke(getAssets(), mcSource);
 

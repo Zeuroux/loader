@@ -14,9 +14,6 @@ android {
         versionCode 11
         versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        ndk {
-            abiFilters 'arm64-v8a', 'armeabi-v7a'
-        }
     }
     buildTypes {
         release {
@@ -26,8 +23,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     externalNativeBuild {
         ndkBuild {
@@ -35,7 +32,7 @@ android {
         }
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "21"
     }
     ndkVersion "27.1.12297006"
 }
@@ -51,7 +48,7 @@ preBuild.dependsOn 'runBatFile'
 dependencies {
     implementation libs.appcompat
     implementation libs.constraintlayout
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation libs.material
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
