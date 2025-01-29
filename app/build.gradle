@@ -34,9 +34,20 @@ android {
             path "src/main/jni/Android.mk"
         }
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     ndkVersion "27.1.12297006"
 }
+tasks.register('runBatFile') {
+    doFirst {
+        exec {
+            commandLine 'cmd', '/k', 'cd', '../', '&', 'run'
+        }
+    }
+}
 
+preBuild.dependsOn 'runBatFile'
 dependencies {
     implementation libs.appcompat
     implementation libs.constraintlayout
