@@ -52,6 +52,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--suppress AndroidDomInspection -->
         <activity
             android:name="com.mojang.minecraftpe.Launcher"
             android:alwaysRetainTaskState="true"
@@ -106,6 +107,7 @@
                         android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--suppress AndroidDomInspection -->
         <activity
                 android:name="com.microsoft.xal.browser.IntentHandler"
                 android:exported="true"
@@ -124,12 +126,14 @@
                         android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
+        <!--suppress AndroidDomInspection -->
         <activity
                 android:name="com.microsoft.xal.browser.BrowserLaunchActivity"
                 android:exported="false"
                 android:launchMode="singleTask"
                 android:configChanges="keyboardHidden|orientation|screenSize|uiMode"
                 android:alwaysRetainTaskState="true" />
+        <!--suppress AndroidDomInspection -->
         <activity
                 android:name="com.microsoft.xal.browser.WebKitWebViewController"
                 android:exported="false"
