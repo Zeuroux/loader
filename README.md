@@ -1,4 +1,2 @@
-# MaterialBinLoader-Apk
-A Minecraft Bedrock Edition launcher that also loads [materialbinloader](https://github.com/ddf8196/MaterialBinLoader)
-## Download
-Check [release](https://github.com/bambosan/MaterialBinLoader-Apk/releases)
+# Loader
+A Minecraft Bedrock Edition launcher copied from [MaterialBinLoader](https://github.com/mcbegamerxx954/MaterialBinLoader-Apk)

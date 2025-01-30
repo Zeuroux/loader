@@ -1,36 +1,33 @@
-package com.mojang.minecraftpe;
+package com.mojang.minecraftpe
 
-import android.os.Bundle;
+import android.annotation.SuppressLint
+import android.os.Bundle
+import java.lang.reflect.Method
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-
-/** @noinspection ALL*/
-public class Launcher extends com.mojang.minecraftpe.MainActivity {
-    @Override
-    public void onCreate(Bundle bundle) {
+class Launcher : MainActivity() {
+    @SuppressLint("DiscouragedPrivateApi")
+    override fun onCreate(bundle: Bundle?) {
         try {
-            Method addAssetPath = getAssets().getClass().getDeclaredMethod("addAssetPath", String.class);
-            String mcSource = getIntent().getStringExtra("MC_SRC");
-            addAssetPath.invoke(getAssets(), mcSource);
+            val addAssetPath: Method = assets.javaClass.getDeclaredMethod(
+                "addAssetPath",
+                String::class.java
+            )
+            val mcSource = intent.getStringExtra("MC_SRC")
+            addAssetPath.invoke(assets, mcSource)
 
-            ArrayList<String> mcSplitSrc = getIntent().getStringArrayListExtra("MC_SPLIT_SRC");
-            if (mcSplitSrc != null){
-                for (String splitSource : mcSplitSrc) {
-                    addAssetPath.invoke(getAssets(), splitSource);
+            val mcSplitSrc = intent.getStringArrayListExtra("MC_SPLIT_SRC")
+            if (mcSplitSrc != null) {
+                for (splitSource in mcSplitSrc) {
+                    addAssetPath.invoke(assets, splitSource)
                 }
             }
-            super.onCreate(bundle);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            super.onCreate(bundle)
+        } catch (e: Exception) {
+            throw RuntimeException(e)
         }
     }
-
-    static {
-        System.loadLibrary("c++_shared");
-        System.loadLibrary("fmod");
-        System.loadLibrary("minecraftpe");
-        System.loadLibrary("mc");
-        System.loadLibrary("mtbinloader2");
+    init {
+        System.out.println("Loading native libraries")
+        System.loadLibrary("mc")
     }
 }
