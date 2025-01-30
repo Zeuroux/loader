@@ -27,7 +27,7 @@ class Launcher : MainActivity() {
         }
     }
     init {
-        System.out.println("Loading native libraries")
+        println("Loading native libraries")
         System.loadLibrary("mc")
     }
 }
